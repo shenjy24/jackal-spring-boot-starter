@@ -3,7 +3,6 @@ package com.shenjy.handler.disruptor;
 import com.lmax.disruptor.RingBuffer;
 
 import java.nio.ByteBuffer;
-import java.util.Random;
 
 /**
  * 【 enter the class description 】
