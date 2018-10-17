@@ -7,6 +7,7 @@ import com.shenjy.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
@@ -33,8 +34,9 @@ public class UserController extends BaseController{
      * 使用guava类库的RateLimiter进行限流
      */
     @RequestMapping("/getUser")
-    public JsonResult getUser() {
+    public JsonResult getUser(HttpServletResponse response) {
         if (!rateLimiter.tryAcquire()) {
+            response.setStatus(500);
             return error(SystemCode.HANDLE_EXCEPTION);
         }
 
