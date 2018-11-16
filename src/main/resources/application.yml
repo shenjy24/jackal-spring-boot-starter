@@ -1,16 +1,3 @@
-#kafka config
-spring:
-  redis:
-    host: shenjy.club
-    port: 6379
-    timeout: 10000
-    lettuce:
-      pool:
-        max-active: 8
-        max-wait: -1s
-        max-idle: 8
-        min-idle: 0
-
 wx:
   appid: wx9692a6329bcdb403
   secret: f4a63407b101e6f51e4d70e58476387c
