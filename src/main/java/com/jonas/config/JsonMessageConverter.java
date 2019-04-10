@@ -20,7 +20,7 @@ public class JsonMessageConverter {
 
     @Bean
     @ConditionalOnMissingBean
-    public FastJsonHttpMessageConverter getFastJsonHttpMessageConverter() {
+    public FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
 
         FastJsonHttpMessageConverter jsonConverter = new FastJsonHttpMessageConverter();
 

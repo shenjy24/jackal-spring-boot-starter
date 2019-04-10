@@ -1,4 +1,0 @@
-wx:
-  appid: wx9692a6329bcdb403
-  secret: f4a63407b101e6f51e4d70e58476387c
-  url: https://api.weixin.qq.com/sns/jscode2session
