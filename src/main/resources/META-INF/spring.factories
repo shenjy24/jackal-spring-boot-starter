@@ -1,2 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.jonas.config.JsonMessageConverter
+com.jonas.config.JsonMessageConverter,\
+com.jonas.config.FeignDecoder,\
+com.jonas.config.GlobalExceptionHandler,\
+com.jonas.config.LocalEventConfig,\
+com.jonas.config.ResponseAdvice

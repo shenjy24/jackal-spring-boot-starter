@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 将默认HttpMessageConverter替换为FastJsonHttpMessageConverter
+ * 【 将默认HttpMessageConverter替换为FastJsonHttpMessageConverter 】
  *
  * @author yangjh  05/09/2018.
  */
