@@ -6,6 +6,8 @@ import com.jonas.common.BizException;
 import com.jonas.common.JsonResult;
 import com.jonas.common.SystemCode;
 import com.jonas.util.logging.JacLogger;
+import feign.FeignException;
+import feign.codec.DecodeException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,8 +30,13 @@ public class GlobalExceptionHandler {
         if (ex instanceof BizException) {
             Iterable iterable = Splitter.on(":").trimResults().omitEmptyStrings().split(ex.getMessage());
             List<String> items = Lists.newArrayList(iterable);
-
             return new JsonResult(items.get(1), items.get(2), null);
+        } else if (ex instanceof DecodeException) {
+            if (ex.getMessage().startsWith("BizException")) {
+                Iterable iterable = Splitter.on(":").trimResults().omitEmptyStrings().split(ex.getMessage());
+                List<String> items = Lists.newArrayList(iterable);
+                return new JsonResult(items.get(1), items.get(2), null);
+            }
         }
 
         JacLogger.error(ex, "handle exception");

@@ -12,7 +12,6 @@ public enum SystemCode implements CodeStatus {
     NEED_AUTH("2002", "权限不足"),
     PARAM_ERROR("2003", "参数异常"),
     SERVER_ERROR("2004", "服务器异常"),
-    BIZ_ERROR("2005", "自定义异常")
     ;
 
     private String code;

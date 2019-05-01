@@ -27,6 +27,9 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        return new JsonResult<>(SystemCode.SUCCESS, body);
+        if (!(body instanceof JsonResult)) {
+            return new JsonResult(SystemCode.SUCCESS, body);
+        }
+        return body;
     }
 }

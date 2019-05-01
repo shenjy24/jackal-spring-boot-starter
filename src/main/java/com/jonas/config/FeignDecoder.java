@@ -1,6 +1,7 @@
 package com.jonas.config;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.jonas.common.BizException;
 import com.jonas.common.JsonResult;
 import com.jonas.common.SystemCode;
@@ -35,14 +36,13 @@ public class FeignDecoder implements Decoder {
         }
         String content = outputStream.toString("UTF-8");
 
-        JsonResult result = JSON.parseObject(content, JsonResult.class);
-
-        if (SystemCode.SUCCESS.getCode().equals(result.getCode())) {
+        JSONObject result = JSON.parseObject(content);
+        if (SystemCode.SUCCESS.getCode().equals(result.getString("code"))) {
             //正常返回
-            return null != result.getData() ? result.getData() : null;
+            return null != result.get("data") ? result.get("data") : null;
         } else {
             //异常返回
-            throw new BizException(result.getCode(), result.getMessage());
+            throw new BizException(result.getString("code"), result.getString("message"));
         }
     }
 }
