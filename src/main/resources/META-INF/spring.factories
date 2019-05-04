@@ -3,4 +3,5 @@ com.jonas.config.JsonMessageConverter,\
 com.jonas.config.FeignDecoder,\
 com.jonas.config.GlobalExceptionHandler,\
 com.jonas.config.LocalEventConfig,\
-com.jonas.config.ResponseAdvice
+com.jonas.config.ResponseAdvice,\
+com.jonas.service.localevent.LocalEventSender

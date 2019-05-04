@@ -1,9 +1,9 @@
-package com.jonas.service;
+package com.jonas.service.localevent;
 
 import org.springframework.context.ApplicationEventPublisher;
 
 /**
- * 【 本地时间 】
+ * 【 本地事件 】
  *
  * @author shenjy 2019/04/30
  */
