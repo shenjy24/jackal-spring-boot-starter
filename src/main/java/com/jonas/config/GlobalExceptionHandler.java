@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import com.jonas.common.BizException;
 import com.jonas.common.JsonResult;
 import com.jonas.common.SystemCode;
-import com.jonas.util.logging.JacLogger;
+import com.jonas.util.logging.GwsLogger;
 import feign.codec.DecodeException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
             }
         }
 
-        JacLogger.error(ex, "handle exception");
+        GwsLogger.error(ex, "handle exception");
         return new JsonResult(SystemCode.SERVER_ERROR);
     }
 }

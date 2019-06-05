@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author shenjy 2019/04/30
  */
-public final class JacLogger {
+public final class GwsLogger {
     private static ConcurrentHashMap<LoggerEnum, Logger> logMaps = new ConcurrentHashMap<>();
 
     /**
@@ -61,10 +61,6 @@ public final class JacLogger {
      */
     public static void info(LoggerEnum loggerType, String msg, Object... args) {
         Logger logger = getLogger(loggerType);
-        if (!ACCESS_LOGGER.equals(logger)) {
-            msg = addImportantToLog(msg);
-        }
-
         logger.info(msg, args);
     }
 
@@ -77,9 +73,6 @@ public final class JacLogger {
      */
     public static void info(String msg, Object... args) {
         Logger logger = getLogger();
-        if (!ACCESS_LOGGER.equals(logger)) {
-            msg = addImportantToLog(msg);
-        }
         logger.info(msg, args);
     }
 
@@ -93,9 +86,6 @@ public final class JacLogger {
      */
     public static void debug(String msg, Object... args) {
         Logger logger = getLogger();
-        if (!ACCESS_LOGGER.equals(logger)) {
-            msg = addImportantToLog(msg);
-        }
         logger.debug(msg, args);
     }
 
@@ -109,9 +99,6 @@ public final class JacLogger {
      */
     public static void debug(LoggerEnum loggerType, String msg, Object... args) {
         Logger logger = getLogger(loggerType);
-        if (!ACCESS_LOGGER.equals(logger)) {
-            msg = addImportantToLog(format(msg, args));
-        }
         logger.debug(msg);
     }
 
@@ -124,9 +111,6 @@ public final class JacLogger {
      */
     public static void error(String msg, Object... args) {
         Logger logger = getLogger();
-        if (!ACCESS_LOGGER.equals(logger)) {
-            msg = addImportantToLog(msg);
-        }
         logger.error(msg, args);
     }
 
@@ -140,34 +124,7 @@ public final class JacLogger {
      */
     public static void error(Throwable throwable, String msg, Object... args) {
         Logger logger = getLogger();
-        if (!ACCESS_LOGGER.equals(logger)) {
-            msg = addImportantToLog(format(msg, args));
-        }
         logger.error(msg, throwable);
-    }
-
-    /**
-     * 增加重要信息到日志中
-     *
-     * @param msg
-     * @return
-     * @author liuyi 2016年4月20日
-     */
-    private static String addImportantToLog(String msg) {
-//		AccessLog accessLog = GlobalConstant.accessLog.get();
-//
-//		String action = (null != accessLog) ? accessLog.getAction() : StringUtils.EMPTY;
-//		String sid = (null != accessLog) ? accessLog.getSid() : StringUtils.EMPTY;
-//		String uid = (null != accessLog) ? accessLog.getUid() : StringUtils.EMPTY;
-//
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("msg=").append(msg).append("===>");
-//		sb.append("action=").append(action).append(GlobalConstant.CON_QUOTE);
-//		sb.append("uid=").append(uid).append(GlobalConstant.CON_QUOTE);
-//		sb.append("sid=").append(sid).append(GlobalConstant.CON_QUOTE);
-//
-//		return sb.toString();
-        return msg;
     }
 
     /**
